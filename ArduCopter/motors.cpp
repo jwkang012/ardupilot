@@ -294,9 +294,11 @@ void Copter::init_disarm_motors()
     ap.in_arming_delay = false;
 }
 
+
 // motors_output - send output to motors library which will adjust and send to ESCs and servos
 void Copter::motors_output()
 {
+
 #if ADVANCED_FAILSAFE == ENABLED
     // this is to allow the failsafe module to deliberately crash
     // the vehicle. Only used in extreme circumstances to meet the
@@ -309,6 +311,7 @@ void Copter::motors_output()
         // landing must continue to run the motors output
     }
 #endif
+
 
     // Update arming delay state
     if (ap.in_arming_delay && (!motors->armed() || millis()-arm_time_ms > ARMING_DELAY_SEC*1.0e3f || control_mode == THROW)) {
@@ -346,6 +349,7 @@ void Copter::motors_output()
 }
 
 // check for pilot stick input to trigger lost vehicle alarm
+
 void Copter::lost_vehicle_check()
 {
     static uint8_t soundalarm_counter;
